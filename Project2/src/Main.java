@@ -53,8 +53,9 @@ public class Main {
     }
 
     public static void removeTask() {
-        System.out.println("What task would use like to remove? 0-" + listOfTasks.size());
-        int task = input.nextInt();
+
+        System.out.println("What task would use like to remove? 1-" + listOfTasks.size());
+        int task = input.nextInt()-1;
         input.nextLine();
 
 
@@ -67,8 +68,8 @@ public class Main {
     public static void updateTask() {
 
         System.out.println(listOfTasks);
-        System.out.println("What task would use like to update? 0-" + listOfTasks.size());
-        int updatedList = input.nextInt();
+        System.out.println("What task would use like to update? 1-" + listOfTasks.size());
+        int updatedList = input.nextInt()-1;
 
         Task task2 = listOfTasks.get(updatedList);
 
@@ -92,7 +93,9 @@ public class Main {
             switch (choice) {
                 case 1:
                     for (int i = 0; i < listOfTasks.size(); i++) {
-                        System.out.println("Index value: " + i + " | " + listOfTasks.get(i) + "\n");
+                        System.out.println("Index value: " + i + " | " + "Task Name: " + listOfTasks.get(i).getName() +
+                                " Description: " + listOfTasks.get(i).getDescription() +
+                                " Priority: " + listOfTasks.get(i).getPriority() + "\n");
                     }
                     break;
 
@@ -103,14 +106,13 @@ public class Main {
                     boolean isPriorInList = false;
                     for(Task task: listOfTasks) {
                         if (task.getPriority() == wantedPriority) {
-                            System.out.println(task);
+                            int i = listOfTasks.indexOf(task);
+                            System.out.println("Index value: " + i + " | " + "Task Name: " + listOfTasks.get(i).getName() +
+                                    " Description: " + listOfTasks.get(i).getDescription() +
+                                    " Priority: " + listOfTasks.get(i).getPriority() + "\n");
                             isPriorInList = true;
                         }
-                        else {
-                            System.out.println("Priority is not there! Please select another level of priority");
-                            wantedPriority = input.nextInt();
-                            input.nextLine();
-                        }
+
 
 
                     }
